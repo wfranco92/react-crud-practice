@@ -26,7 +26,7 @@ function App() {
       <h1>CRUD REACT PRACTICE</h1>
       <div>
         <h2> Add Users</h2>
-        <AddUserForm />
+        <AddUserForm addUser={addUser}/>
       </div>
       <div>
         <h2>View Users</h2>

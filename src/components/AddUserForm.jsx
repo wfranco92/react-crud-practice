@@ -5,26 +5,30 @@ const AddUserForm = (props) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = (data, e) => {
         console.log(data);
+        props.addUser(data);
+        e.target.reset();
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <label>Name</label>
             <input type="text"
-                {...register("name", {  // forma actual para que funciones las restrincciones del input
+                {...register("name", {
                     required: { value: true, message: 'Campo Requerido' },
                     minLength: { value: 5, message: "Debes ingresar minimo 5 caracteres" }
                 })}
             />
+            <span>{errors?.name?.message}</span>
             <label>Username</label>
             <input type="text"
-                {...register("username", {  // forma actual para que funciones las restrincciones del input
+                {...register("username", {
                     required: { value: true, message: 'Campo Requerido' },
                     minLength: { value: 5, message: "Debes ingresar minimo 5 caracteres" }
                 })}
             />
+            <span>{errors?.name?.message}</span>
             <button>Add new user</button>
         </form>
     );
