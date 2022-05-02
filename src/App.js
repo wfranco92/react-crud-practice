@@ -20,7 +20,9 @@ function App() {
       user
     ])
   }
-
+  const deleteUser = (idUser) =>{
+    setUsers(users.filter(user => user.id !== idUser))
+  }
   return (
     <div className="container">
       <h1>CRUD REACT PRACTICE</h1>
@@ -30,7 +32,7 @@ function App() {
       </div>
       <div>
         <h2>View Users</h2>
-        <UserTable users={users} />
+        <UserTable users={users} deleteUser={deleteUser}/>
       </div>
     </div>
   );
