@@ -7,9 +7,9 @@ import EditUserForm from './components/EditUserForm';
 function App() {
 
   const usersData = [
-    { id: uuidv4(), name: 'Tania', username: 'floppydiskette' },
-    { id: uuidv4(), name: 'Craig', username: 'siliconeidolon' },
-    { id: uuidv4(), name: 'Ben', username: 'benisphere' },
+    { id: uuidv4(), name: 'Willian', username: 'wfn123' },
+    { id: uuidv4(), name: 'Luis', username: 'lius' },
+    { id: uuidv4(), name: 'Jhon', username: 'jhonn' },
   ]
 
   const [users, setUsers] = useState(usersData)
@@ -66,7 +66,7 @@ function App() {
       </div>
       <div>
         <h2>View Users</h2>
-        <UserTable
+        <UserTable 
           users={users}
           deleteUser={deleteUser}
           setEditing={setEditing}

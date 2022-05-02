@@ -11,7 +11,8 @@ const AddUserForm = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='form-container'>
+            <form onSubmit={handleSubmit(onSubmit)} className='form-container'>
             <label>Name</label>
             <input type="text"
                 {...register("name", {
@@ -30,6 +31,8 @@ const AddUserForm = (props) => {
             <span>{errors?.name?.message}</span>
             <button>Add new user</button>
         </form>
+        </div>
+        
     );
 }
 

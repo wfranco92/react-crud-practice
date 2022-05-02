@@ -4,22 +4,24 @@ import { useForm } from 'react-hook-form';
 
 const EditUserForm = (props) => {
 
-        const { register, handleSubmit, formState: { errors }, setValue } = useForm({
-            defaultValues: props.currentUser
-        });
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm({
+        defaultValues: props.currentUser
+    });
 
-        setValue('name', props.currentUser.name);
-        setValue('username', props.currentUser.username);
+    setValue('name', props.currentUser.name);
+    setValue('username', props.currentUser.username);
 
 
-        const onSubmit = (data, e) => {
-            data.id = props.currentUser.id
-            props.updateUser( props.currentUser.id, data)
-            e.target.reset();
-        }
+    const onSubmit = (data, e) => {
+        data.id = props.currentUser.id
+        props.updateUser(props.currentUser.id, data)
+        e.target.reset();
+    }
 
-        return (
-            <form onSubmit={handleSubmit(onSubmit)}>
+    return (
+
+        <div className='form-container'>
+            <form onSubmit={handleSubmit(onSubmit)} className='form-container'>
                 <label>Name</label>
                 <input type="text"
                     {...register("name", {
@@ -38,7 +40,9 @@ const EditUserForm = (props) => {
                 <span>{errors?.name?.message}</span>
                 <button>Edit user</button>
             </form>
-        );
-    }
+        </div>
 
-    export default EditUserForm;
+    );
+}
+
+export default EditUserForm;
