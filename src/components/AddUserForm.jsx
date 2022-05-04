@@ -33,7 +33,7 @@ const AddUserForm = (props) => {
                 <span>{errors?.name?.message}</span>
                 <div className="d-grid gap-2 col-6 mx-auto mt-4">
                 <button
-                    type="button"
+                    type="submit"
                     className="btn btn-success"
                 >Add new user</button>
                 </div>

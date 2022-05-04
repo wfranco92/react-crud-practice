@@ -7,11 +7,11 @@ const RowTableUser = (props) => {
             <td>{props.usersNickname}</td>
             <td>
                 <button
-                    type="button" className="btn btn-primary"
+                    type="submit" className="btn btn-primary"
                     onClick={() => props.editRow(props.user)}
                 >Edit</button>
                 <button
-                    type="button" className="btn btn-danger"
+                    type="submit" className="btn btn-danger"
                     onClick={() => props.deleteUser(props.usersKey)}
                 >Delete</button>
             </td>

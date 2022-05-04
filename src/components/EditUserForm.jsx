@@ -42,7 +42,7 @@ const EditUserForm = (props) => {
                 <span>{errors?.name?.message}</span>
                 <div className="d-grid gap-2 col-6 mx-auto mt-4">
                 <button
-                    type="button" className="btn btn-primary"
+                    type="submit" className="btn btn-primary"
                 >Edit user</button>
                 </div>
             </form>

@@ -9,13 +9,13 @@ const Search = (props) => {
     }
 
     return (
-        <div class="input-group rounded">
-            <input type="search" class="form-control rounded" placeholder="Search User By Name. . ." aria-label="Search" aria-describedby="search-addon" 
+        <div className="input-group rounded">
+            <input type="search" className="form-control rounded" placeholder="Search User By Name. . ." aria-label="Search" aria-describedby="search-addon" 
                 value={props.searchUser}
                 onChange={changeValue}
             />
-            <span class="input-group-text border-0" id="search-addon">
-                <i class="fas fa-search">🍳 </i>
+            <span className="input-group-text border-0" id="search-addon">
+                <i className="fas fa-search">🍳 </i>
             </span>
         </div>
     );
