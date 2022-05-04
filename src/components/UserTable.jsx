@@ -4,8 +4,8 @@ const UserTable = (props) => {
 
     return (
 
-        <div className='userTable'>
-            <table border="1">
+        <div>
+            <table className="table">
                 <thead>
                     <tr>
                         <th>Name</th>

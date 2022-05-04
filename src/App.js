@@ -79,12 +79,12 @@ function App() {
 
   return (
     <div className="container">
-      <h1>CRUD REACT PRACTICE</h1>
+      <h1 className="display-1">CRUD REACT PRACTICE</h1>
       <div>
         {
           editing ? (
             <div>
-              <h2> Edit Users</h2>
+              <h2 className="display-3"> Edit Users</h2>
               <EditUserForm
                 currentUser={currentUser}
                 updateUser={updateUser}
@@ -93,14 +93,14 @@ function App() {
 
           ) : (
             <div>
-              <h2> Add Users</h2>
+              <h2 className="display-3"> Add Users</h2>
               <AddUserForm addUser={addUser} />
             </div>
           )
         }
       </div>
       <div>
-        <h2>View Users</h2>
+        <h2 className="display-3">View Users</h2>
         <Search
           searchUser={searchUser}
           setsearchUser={setsearchUser}

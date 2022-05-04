@@ -13,26 +13,33 @@ const AddUserForm = (props) => {
     return (
         <div className='form-container'>
             <form onSubmit={handleSubmit(onSubmit)} className='form-container'>
-            <label>Name</label>
-            <input type="text"
-                {...register("name", {
-                    required: { value: true, message: 'Campo Requerido' },
-                    minLength: { value: 5, message: "Debes ingresar minimo 5 caracteres" }
-                })}
-            />
-            <span>{errors?.name?.message}</span>
-            <label>Username</label>
-            <input type="text"
-                {...register("username", {
-                    required: { value: true, message: 'Campo Requerido' },
-                    minLength: { value: 5, message: "Debes ingresar minimo 5 caracteres" }
-                })}
-            />
-            <span>{errors?.name?.message}</span>
-            <button>Add new user</button>
-        </form>
+                <label>Name</label>
+                <input type="text"
+                    {...register("name", {
+                        required: { value: true, message: 'Campo Requerido' },
+                        minLength: { value: 5, message: "Debes ingresar minimo 5 caracteres" }
+                    })}
+                    className="form-control"
+                />
+                <span>{errors?.name?.message}</span>
+                <label>Username</label>
+                <input type="text"
+                    {...register("username", {
+                        required: { value: true, message: 'Campo Requerido' },
+                        minLength: { value: 5, message: "Debes ingresar minimo 5 caracteres" }
+                    })}
+                    className="form-control"
+                />
+                <span>{errors?.name?.message}</span>
+                <div className="d-grid gap-2 col-6 mx-auto mt-4">
+                <button
+                    type="button"
+                    className="btn btn-success"
+                >Add new user</button>
+                </div>
+            </form>
         </div>
-        
+
     );
 }
 
