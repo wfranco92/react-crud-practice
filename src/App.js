@@ -3,26 +3,45 @@ import UserTable from './components/UserTable';
 import { v4 as uuidv4 } from 'uuid';
 import AddUserForm from './components/AddUserForm';
 import EditUserForm from './components/EditUserForm';
+import Search from './components/Search';
+import RowTableUser from './components/RowTableUser';
+
 
 function App() {
 
-  const usersData = [
-    { id: uuidv4(), name: 'Willian', username: 'wfn123' },
-    { id: uuidv4(), name: 'Luis', username: 'lius' },
-    { id: uuidv4(), name: 'Jhon', username: 'jhonn' },
-  ]
+  const [users, setUsers] = useState([]);
+  const [searchUser, setsearchUser] = useState('');
 
-  const [users, setUsers] = useState(usersData)
+  React.useEffect(() => {
+    const listUsers = localStorage.getItem("usuarios");
+    let parseListUsers;
+    if (!listUsers) {
+      localStorage.setItem("usuarios", JSON.stringify([]));
+      parseListUsers = [];
+    }
+    else {
+      parseListUsers = JSON.parse(listUsers);
+    }
+
+    setUsers(parseListUsers);
+  }, []);
 
   const addUser = (user) => {
     user.id = uuidv4()
-    setUsers([
-      ...users,
-      user
-    ])
+    const allUsers = [...users]
+    allUsers.push(user)
+    const userParJSON = JSON.stringify(allUsers);
+    localStorage.setItem("usuarios", userParJSON);
+    setUsers(allUsers);
   }
+
   const deleteUser = (idUser) => {
-    setUsers(users.filter(user => user.id !== idUser))
+    const userIndex = users.findIndex(user => user.id === idUser);
+    const newUsers = [...users];
+    newUsers.splice(userIndex, 1);
+    const userParJSON = JSON.stringify(newUsers);
+    localStorage.setItem("usuarios", userParJSON);
+    setUsers(newUsers);
   }
 
   const [editing, setEditing] = useState(false)
@@ -39,8 +58,24 @@ function App() {
 
   const updateUser = (id, updatedUser) => {
     setEditing(false);
-    setUsers(users.map(user => (user.id === id ? updatedUser : user)))
+    const newUsers = users.map(user => (user.id === id ? updatedUser : user));
+    const userParseJSON = JSON.stringify(newUsers);
+    localStorage.setItem("usuarios", userParseJSON);
+    setUsers(newUsers)
   }
+
+  let listSearchUser = [];
+
+  if (!searchUser.length >= 1) {
+    listSearchUser = users;
+  } else {
+    listSearchUser = users.filter(user => {
+      const userText = user.name.toLowerCase();
+      const searchUserName = searchUser.toLowerCase();
+      return userText.includes(searchUserName);
+    });
+  }
+
 
   return (
     <div className="container">
@@ -66,12 +101,25 @@ function App() {
       </div>
       <div>
         <h2>View Users</h2>
-        <UserTable 
-          users={users}
-          deleteUser={deleteUser}
-          setEditing={setEditing}
-          editRow={editRow}
+        <Search
+          searchUser={searchUser}
+          setsearchUser={setsearchUser}
         />
+        <UserTable>
+          {listSearchUser.length > 0 ? listSearchUser.map(user => (
+            <RowTableUser
+              key={user.id}
+              user={user}
+              usersName={user.name}
+              usersNickname={user.username}
+              deleteUser={deleteUser}
+              setEditing={setEditing}
+              editRow={editRow}
+            />
+          ))
+            : <></>
+            }
+        </UserTable>
       </div>
     </div>
   );
